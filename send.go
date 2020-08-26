@@ -34,8 +34,7 @@ type ClientOptions struct {
 func NewClientOptions() ClientOptions {
 	options := ClientOptions{
 		Timeout: 30 * time.Second,	
-	},
-	
+	}
 	return &options
 }
 
