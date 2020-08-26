@@ -31,7 +31,7 @@ type ClientOptions struct {
 	Timeout int	
 }
 
-func NewClientOptions() ClientOptions {
+func NewClientOptions() *ClientOptions {
 	options := ClientOptions{
 		Timeout: 30 * time.Second,	
 	}
@@ -42,7 +42,7 @@ func NewClientOptions() ClientOptions {
 func NewClient(options ClientOptions) API {
 	client := teamsClient{
 		httpClient: &http.Client{
-			Timeout: options.timeout * time.Second,
+			Timeout: options.timeout,
 		},
 	}
 	return &client
