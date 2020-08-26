@@ -26,11 +26,24 @@ type teamsClient struct {
 	httpClient *http.Client
 }
 
+// ClientOptions - options for the API httpClient
+type ClientOptions struct {
+	Timeout int	
+}
+
+func NewClientOptions() ClientOptions {
+	options := ClientOptions{
+		Timeout: 30 * time.Second,	
+	},
+	
+	return &options
+}
+
 // NewClient - create a brand new client for MS Teams notify
-func NewClient() API {
+func NewClient(options ClientOptions) API {
 	client := teamsClient{
 		httpClient: &http.Client{
-			Timeout: 5 * time.Second,
+			Timeout: options.timeout * time.Second,
 		},
 	}
 	return &client
